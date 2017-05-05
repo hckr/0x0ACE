@@ -1,0 +1,36 @@
+button::-moz-focus-inner {
+    border: 0;
+}
+
+a:active {
+    outline:none;
+}
+
+a:focus {
+    outline:none;
+    -moz-outline-style: none;
+}
+
+object {
+    outline:none;
+}
+
+canvas {
+    outline:none;
+}
+
+object embed {
+    outline:none;
+}
+
+embed {
+    outline:none;
+}
+
+video {
+    outline:none;
+}
+
+audio {
+    outline:none;
+}

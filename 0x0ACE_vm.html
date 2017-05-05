@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html style="cursor: auto ! important;"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta charset="utf-8"><meta http-equiv="x-ua-compatible" content="ie=edge"><title>0x0ACE</title><meta name="viewport" content="initial-scale=1, width=device-width">
+        <link rel="apple-touch-icon" href="http://80.233.134.207/apple-icon.png">
+    <style>
+        * { font-family: monospace; }
+        html, body { height: 100%; word-wrap: break-word; }
+        div.footer { color: silver; margin-top: 2em; }
+    </style>
+    <link rel="stylesheet" type="text/css" href="0x0ACE_vm_pliki/style.css"></head>
+    <body>
+        <h1>In <u>a</u> <u>c</u>or<u>e</u> of e<u>ac</u>h comput<u>e</u>r there is...</h1>
+        <span>let's start short esoteric journey. we give you binary to run, you let us know what were in registers at the end of execution</span><br>
+        <span>don't forget you have 5 seconds to respond</span><br>
+        <br>
+        <a href="http://80.233.134.207/challenge?a11233c1-c3f8-4a8b-815e-974bfc5254ff">0x0ACE.BIN</a>
+        <br><br>
+        <form method="POST" action="challenge?a11233c1-c3f8-4a8b-815e-974bfc5254ff">
+        <input name="reg0" placeholder="16bit hex value" type="text">
+        <input name="reg1" placeholder="16bit hex value" type="text">
+        <input name="reg2" placeholder="16bit hex value" type="text">
+        <input name="reg3" placeholder="16bit hex value" type="text">
+        <input type="submit">
+        </form>
+        <br><br>
+        CPU description:<br>
+
+<pre>num registers: 4
+endianess: little
+register width: 16bit
+opcode format:
+   0 bit                            16 bit                  32 bit
+   |                   (opt)    (opt)  |        (opt)          |
+   |     code   mod  dest-reg  src-reg | immediate value (imm) |
+   | xxxxxxxx  xxxx        xx       xx |   xxxxxxxx xxxxxxxx   |
+mod:
+    0x0 - imm
+    0x1 - reg
+    0x2 - reg+imm
+    0x3 - reg+reg
+    0x4-0xf - reserved
+{dest,src}-reg:
+    0x0 - r0
+    0x1 - r1
+    0x2 - r2
+    0x3 - r3
+
+example:
+bin: 00000000 00010010 00011010 10011111
+hex: 00 12 9f 1a
+explanation: move value 6815 to r1
+</pre>
+        instructions:<br>
+        <table style="font-family: Console;">
+            <tbody><tr style="background-color: silver;"><td>&nbsp; code &nbsp;</td><td>operation</td></tr>
+            <tr><td>0x00</td><td>move</td></tr>
+            <tr><td>0x01</td><td>bitwise or</td></tr>
+            <tr><td>0x02</td><td>bitwise xor</td></tr>
+            <tr><td>0x03</td><td>bitwise and</td></tr>
+            <tr><td>0x04</td><td>bitwise negation</td></tr>
+            <tr><td>0x05</td><td>addition</td></tr>
+            <tr><td>0x06</td><td>subtraction</td></tr>
+            <tr><td>0x07</td><td>multiplication</td></tr>
+            <tr><td>0x08</td><td>shift left</td></tr>
+            <tr><td>0x09</td><td>shift right</td></tr>
+            <tr><td>0x0a</td><td>increment</td></tr>
+            <tr><td>0x0b</td><td>decrement</td></tr>
+            <tr><td>0x0c</td><td>push on stack</td></tr>
+            <tr><td>0x0d</td><td>pop from stack</td></tr>
+            <tr><td>0x0e</td><td>compare</td></tr>
+            <tr><td>0x0f</td><td>jump to nth opcode when not zero*</td></tr>
+            <tr><td>0x10</td><td>jump to nth opcode when zero*</td></tr>
+        </tbody></table>
+<pre>* - nth opcode is not nth byte in binary
+
+All arithmetic and logical instructions set zero
+flag according to the result - if result of operation
+was 0 - zero flag is set, else zero flag is cleared.
+Compare operation executes subtraction without writing any
+registers (just setting the zero flag).
+Shift operations are not circular!
+</pre>
+<br>Good luck!<br>
+        <div class="footer">0x0<u>ACE</u></div>
+    
+
+</body></html>
